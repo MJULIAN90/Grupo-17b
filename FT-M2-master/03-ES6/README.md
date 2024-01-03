@@ -27,13 +27,13 @@ El ES6 ,también conocido como ECMAScript 2015 o ES2015+, es la última versión
 
 Desde su aparición en 1995, JS fue evolucionando lentamente. ECMAScript apareció como standart en 1997, y desde ahí viene lanzando nuevas versiones como ES3, ES5, ES6, etc..
 
-![no-box](/_src/assets/03-ES6/jsevo.png)
+![no-box](../_src/assets/03-ES6/jsevo.png)
 
 Como ven entre ES3 y ES5 pasaron _10 años_ y entre ES5 y ES6 pasaron _6 años_. Ahora la idea es lanzar nuevas versiones con cambios pequeños cada año.
 
 > Podemos ver un _mapa_ de las compatibilidades actuales de varios engines con respecto al nuevo standart [acá](http://kangax.github.io/compat-table/es6/)
 
-![Compatibilidad](/_src/assets/03-ES6/es6-javascript-support.png)
+![Compatibilidad](../_src/assets/03-ES6/es6-javascript-support.png)
 
 Como todavía no es compatible con muchos browsers, para poder utilizarlo vamos a utilizar una librería llamada `babel.js` que nos servirá para traducir código _ES6_ a la versión actual para así mantener compatibilidad con los engines actuales.
 
@@ -43,28 +43,30 @@ Primero veamos algunas de las cosas que cambiaron en el nuevo standart.
 
 ES6 incluye las siguientes features:
 
-- [let + const (Block Scoping)](#let--const)
-- [arrows =>](#arrows)
-- [classes](#classes)
-- [object literals mejorados](#enhanced-object-literals)
-- [template strings](#template-strings)
-- [destructuring](#destructuring)
-- [default + rest + spread](#default--rest--spread)
-- [iterators + for..of](#iterators--forof)
-- [generators](#generators)
-- [unicode](#unicode)
-- [modules](#modules)
-- [module loaders](#module-loaders)
-- [map + set + weakmap + weakset](#map--set--weakmap--weakset)
-- [proxies](#proxies)
-- [symbols](#symbols)
-- [subclassable built-ins](#subclassable-built-ins)
-- [promises](#promises)
-- [math + number + string + array + object APIs](#math--number--string--array--object-apis)
-- [binary and octal literals](#binary-and-octal-literals)
-- [reflect api](#reflect-api)
-- [tail calls](#tail-calls)
-- [Optional Chaining](#optional-chaining)
+- [ECMAScript 6](#ecmascript-6)
+  - [Historia](#historia)
+  - [Nuevas Features](#nuevas-features)
+  - [ECMAScript 6 Features](#ecmascript-6-features)
+    - [Let + Const](#let--const)
+    - [Arrows](#arrows)
+    - [Classes](#classes)
+    - [Object Literals Mejorados](#object-literals-mejorados)
+    - [Template Strings](#template-strings)
+    - [Destructuring](#destructuring)
+    - [Default + Rest + Spread](#default--rest--spread)
+    - [Iterators + For..Of](#iterators--forof)
+    - [Generators](#generators)
+    - [Unicode](#unicode)
+    - [Modules](#modules)
+    - [Map + Set + WeakMap + WeakSet](#map--set--weakmap--weakset)
+    - [Subclassable Built-ins](#subclassable-built-ins)
+    - [Math + Number + String + Array + Object APIs](#math--number--string--array--object-apis)
+    - [Binary y Octal Literals](#binary-y-octal-literals)
+    - [Promises](#promises)
+    - [Tail Calls](#tail-calls)
+    - [Optional Chaining](#optional-chaining)
+  - [Compatibilidad](#compatibilidad)
+  - [Homework](#homework)
 
 ## ECMAScript 6 Features
 

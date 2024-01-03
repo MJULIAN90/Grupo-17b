@@ -1,4 +1,4 @@
-(function () {
+// (function () {
   window.EventEmitter = EventEmitter;
 
   // our EventEmitter constructor function
@@ -37,4 +37,10 @@
       listener.apply(null, remainingArgs);
     });
   };
-})();
+
+  // exportamos de la forma command js
+  // module.exports = EventEmitter;
+
+  // exportamos de la forma es6 modules
+  export default EventEmitter;
+// })();

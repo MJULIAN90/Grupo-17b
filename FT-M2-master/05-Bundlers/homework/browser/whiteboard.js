@@ -1,5 +1,14 @@
-(function () {
-  window.whiteboard = new window.EventEmitter();
+// (function () {
+  // forma vieja de importar
+  // window.whiteboard = new window.EventEmitter();
+
+  // forma de import con command js
+  // var EventEmitter = require("./event-emitter");
+
+  // forma de importar con es6 modules
+  import EventEmitter from "./event-emitter";
+
+  var whiteboard = new EventEmitter();
 
   // Ultimately, the color of our stroke;
   var color;
@@ -106,4 +115,19 @@
       whiteboard.emit("draw", start, end, strokeColor);
     }
   };
-})();
+
+  // exportamos de la forma de command js
+  module.exports = whiteboard;
+
+  const hola = 'hola'
+
+  const array =[ 1,2,3,4,5,6,7,8,9,10]
+  // exportamos de la forma de es6 modules
+  export {
+    // whiteboard,
+    hola,
+    array
+  };
+
+  export default whiteboard;
+// })();

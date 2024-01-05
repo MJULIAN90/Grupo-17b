@@ -22,13 +22,13 @@
 
 // cons destructuring
 // export default function Card({
-   // name,
-   // status,
-   // gender,
-   // species,
-   // origin,
-   // image,
-   // onClick,
+// name,
+// status,
+// gender,
+// species,
+// origin,
+// image,
+// onClick,
 // }) {
 //   return (
 //     <div>
@@ -50,26 +50,59 @@
 //   );
 // }
 
+import "./styles.css";
+import {stylesLine} from './stylesLine'
 export default function Card(props) {
-  const { 
-   name, 
-   status, 
-   gender, 
-   species, 
-   origin, 
-   image, 
-   onClick,
-   } = props;
+  const { name, status, gender, species, origin, image, onClick } = props;
+
+  //  formas de escribir colores
+
+  // const color = 'yellow'
+  // const color = '#000'
+  // const color = 'rgb(0,0,0)'
+
+  const titulos = {
+    fontSize: 16,
+  };
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <h2>{status}</h2>
-      <h2>{species}</h2>
-      <h2>{gender}</h2>
-      <h2>{origin.name}</h2>
-      <img src={image} alt='foto' />
-      <button onClick={onClick}>X</button>
+    <div className='container'>
+      <img
+        src={image}
+        alt='foto'
+        height={200}
+        width={200}
+        style={stylesLine.img}
+      />
+      <h1
+        style={{
+          backgroundColor: "yellow",
+          fontSize: 16,
+        }}
+      >
+        {name}
+      </h1>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <h2>{status}</h2>
+        <h2>{species}</h2>
+        <h2>{gender}</h2>
+        <h2>{origin.name}</h2>
+      </div>
+      <button
+        onClick={onClick}
+        style={{
+          position: "absolute",
+          top: 8,
+          right: 6,
+        }}
+      >
+        X
+      </button>
     </div>
   );
 }

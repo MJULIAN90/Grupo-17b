@@ -1,3 +1,5 @@
+import { Button, ContainerNav, Input } from "./misEstilos";
+
 export default function SearchBar(props) {
 
    const handleClick = () => {
@@ -6,9 +8,9 @@ export default function SearchBar(props) {
    }
 
    return (
-      <div>
-         <input type='search' />
-         <button onClick={handleClick}>Agregar</button>
-      </div>
+      <ContainerNav>
+         <Input type='search' placeholder="id.."/>
+         <Button onClick={handleClick}>Agregar</Button>
+      </ContainerNav>
    );
 }

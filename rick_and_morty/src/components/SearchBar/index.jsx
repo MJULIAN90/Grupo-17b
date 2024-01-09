@@ -1,16 +1,30 @@
+import { useState } from "react";
 import { Button, ContainerNav, Input } from "./misEstilos";
 
-export default function SearchBar(props) {
+const  SearchBar = (props) => {
+
+   const [id, setId] = useState('')
 
    const handleClick = () => {
       console.log('props', props);
-      props.onSearch();
+      props.onSearch(id);
+   }
+
+   const hamdleChange = ({target}) => {
+      setId(target.value)
    }
 
    return (
       <ContainerNav>
-         <Input type='search' placeholder="id.."/>
+         <Input
+            onChange={hamdleChange}
+            value={id}
+            type='search' 
+            placeholder="id.."
+         />
          <Button onClick={handleClick}>Agregar</Button>
       </ContainerNav>
    );
 }
+
+export default SearchBar;

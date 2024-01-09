@@ -53,17 +53,13 @@
 import "./styles.css";
 import {stylesLine} from './stylesLine'
 export default function Card(props) {
-  const { name, status, gender, species, origin, image, onClick } = props;
+  const { name, status, gender, species, origin, image, onClose } = props;
 
   //  formas de escribir colores
 
   // const color = 'yellow'
   // const color = '#000'
   // const color = 'rgb(0,0,0)'
-
-  const titulos = {
-    fontSize: 16,
-  };
 
   return (
     <div className='container'>
@@ -94,7 +90,7 @@ export default function Card(props) {
         <h2>{origin.name}</h2>
       </div>
       <button
-        onClick={onClick}
+        onClick={() => onClose(props.id)}
         style={{
           position: "absolute",
           top: 8,

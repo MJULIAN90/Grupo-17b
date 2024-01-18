@@ -1,20 +1,34 @@
 import React from "react";
-import SearchBar from "../SearchBar";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Nav = ({onSearch}) => {
+import SearchBar from "../SearchBar";
+import { Button } from "../styles";
+
+const Nav = ({ onSearch, logout }) => {
   return (
-    <div 
-      style={{
-        display: "flex",
-        flexDirection: 'row-reverse',
-        gap: 10,
-        alignItems: 'center',
-      }}
-    >
-      <SearchBar onSearch={onSearch} />
-      <Link to="/about">About</Link>
-      <Link to='/home'>Home</Link>
+    <div style={{ display: "flex", width: "100%" }}>
+      <SearchBar
+        // onSearch={(characterID) => window.alert(characterID)}
+        onSearch={onSearch}
+      />
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+          width: "30%",
+        }}
+      >
+        <Link to={"/home"}>
+          <Button>Home</Button>
+        </Link>
+        <Link to={"/about"}>
+          <Button>About</Button>
+        </Link>
+        <Link to={"/about"}>
+          <Button onClick={logout}>Logout</Button>
+        </Link>
+      </nav>
     </div>
   );
 };

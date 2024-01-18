@@ -22,7 +22,7 @@ const  SearchBar = (props) => {
             type='search' 
             placeholder="id.."
          />
-         <Button onClick={handleClick}>Agregar</Button>
+         <Button onClick={() => handleClick()}>Agregar</Button>
       </ContainerNav>
    );
 }

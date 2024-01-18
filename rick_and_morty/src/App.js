@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Cards from "./components/Cards";
 import Nav from "./components/Nav";
-import useApp from "./hooks/useApp";
+// import useApp from "./hooks/useApp";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import About from "./components/About";
 import Detail from "./components/Detail";
+import Form from "./components/Form";
 
 const URL = "https://rickandmortyapi.com/api/character/";
+const access = {
+  email: 'prueba@gmail.com',
+  password: '123456',
+  isLoged: false,
+}
 
 function App() {
   // con el custom hook
@@ -17,6 +23,8 @@ function App() {
   //    onSearch,
   //    onClose,
   // } = useApp();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const [characters, setCharacters] = useState([]);
 
@@ -48,17 +56,38 @@ function App() {
     setCharacters(personajesFiltrados);
   };
 
+  const login = (data) => {
+
+    if (data.email === access.email && data.password === access.password) {
+      access.isLoged = true;
+      navigate('/home');
+    } else {
+      window.alert('Usuario o contraseña incorrectos');
+    }
+  }
+
+  const logout = () => {
+    alert('adios');
+    access.isLoged = false;
+    navigate('/');
+  }
+
+  useEffect(() => {
+    !access.isLoged && navigate('/');
+  }, [navigate, access.isLoged]);
+
   return (
     <div className='App'>
-      <Nav onSearch={onSearch} />
+      {pathname !== '/' && <Nav onSearch={onSearch} logout={logout} />}
       <Routes>
-         <Route path='/' element={'hola'} />
+        <Route path='/' element={<Form loginUser={login} />} />
         <Route
           path='/home'
           element={<Cards characters={characters} onClose={onClose} />}
         />
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
+        <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </div>
   );

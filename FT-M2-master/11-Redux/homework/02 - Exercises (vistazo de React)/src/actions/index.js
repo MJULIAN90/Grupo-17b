@@ -1,5 +1,7 @@
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
+export const INCREMENTO_COUNTER2 = 'INCREMENTO_COUNTER2';
+export const DECREMENTO_COUNTER2 = 'DECREMENTO_COUNTER2';
 
 // Nuestras actions (action creators) devolverán un paquete de actions que nuestro reducer recibirá. 
 // ¿Cómo es el paquete de acción? Tengan en cuenta que el creador de la acción no es en absoluto responsable 
@@ -8,8 +10,27 @@ export const DECREMENT = 'DECREMENT';
 
 export const increment = () => {
   // Completa la funcion
+  return {
+    type: INCREMENT
+  }
 };
 
 export const decrement = () => {
   // Completa la funcion
+  return {
+    type: DECREMENT
+  }
 };
+
+export const incrementoCounter2 = () => {
+  return {
+    type: INCREMENTO_COUNTER2
+  }
+}
+
+
+export const decrementoCounter2 = () => {
+  return {
+    type: DECREMENTO_COUNTER2
+  }
+}

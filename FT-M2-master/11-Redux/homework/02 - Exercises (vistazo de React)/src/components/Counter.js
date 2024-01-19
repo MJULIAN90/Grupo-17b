@@ -12,7 +12,11 @@ class Counter extends Component {
     //  Implementar una función de incremento que aumenta después de esperar un segundo
   };
 
+
   render() {
+    // console.log('====================================');
+    // console.log(this.props);
+    // console.log('====================================');
     // Completa las funciones onClick de los botones
     // Al hacer clic en estos botones, el recuento debe disminuir o aumentar en consecuencia
     return (
@@ -21,6 +25,7 @@ class Counter extends Component {
         <button
           onClick={() => {
             /* Completar */
+            this.props.increment();
           }}
         >
           + {/* Incremeta */}
@@ -28,6 +33,7 @@ class Counter extends Component {
         <button
           onClick={() => {
             /* Completar */
+            this.props.decrement();
           }}
         >
           - {/* Decrementa */}

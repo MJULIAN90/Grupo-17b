@@ -28,6 +28,9 @@ const Nav = ({ onSearch, logout }) => {
         <Link to={"/about"}>
           <Button onClick={logout}>Logout</Button>
         </Link>
+        <Link to={"/favorites"}>
+          <Button>favorites</Button>
+        </Link>
       </nav>
     </div>
   );

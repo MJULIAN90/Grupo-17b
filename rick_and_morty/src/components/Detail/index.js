@@ -25,16 +25,16 @@ const Detail = () => {
     (async () => {
       try {
         const getCharacter = await axios(`${URL}${id}`);
-        console.log("getCharacter", getCharacter);
+        // console.log("getCharacter", getCharacter);
 
         if (getCharacter.data.name) {
           setCharacter(getCharacter.data);
-          console.log("getCharacter.data", getCharacter.data.origin);
+          // console.log("getCharacter.data", getCharacter.data.origin);
         } else {
           window.alert("No hay personajes con ese I  D");
         }
       } catch (error) {
-        console.log("error", error);
+        // console.log("error", error);
       }
     })();
 

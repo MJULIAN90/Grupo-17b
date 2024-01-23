@@ -50,18 +50,61 @@
 //   );
 // }
 
-import "./styles.css";
-import {stylesLine} from './stylesLine'
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default function Card(props) {
-  const { name, status, gender, species, origin, image, onClose } = props;
+import { addFav, removeFav } from "../../redux/actions";
+
+import { stylesLine } from "./stylesLine";
+import "./styles.css";
+
+const Card = (props) => {
+  const {
+    name,
+    status,
+    gender,
+    species,
+    origin,
+    image,
+    onClose,
+    addFav,
+    removeFav,
+    favorites,
+  } = props;
+  const [isFav, setIsFav] = useState(false);
+
+  const handleFavorite = () => {
+    if (isFav) {
+      setIsFav(false);
+      removeFav(props.id);
+    } else {
+      setIsFav(true);
+      addFav({
+        id: props.id,
+        name,
+        status,
+        gender,
+        species,
+        origin,
+        image,
+      });
+    }
+  };
 
   //  formas de escribir colores
 
   // const color = 'yellow'
   // const color = '#000'
   // const color = 'rgb(0,0,0)'
+
+  useEffect(() => {
+   favorites.forEach((fav) => {
+      if (fav.id === props.id) {
+         setIsFav(true);
+      }
+   });
+}, [favorites]);
 
   return (
     <div className='container'>
@@ -72,6 +115,11 @@ export default function Card(props) {
         width={200}
         style={stylesLine.img}
       />
+      {isFav ? (
+        <button onClick={handleFavorite}>❤️</button>
+      ) : (
+        <button onClick={handleFavorite}>🤍</button>
+      )}
       <Link to={`/detail/${props.id}`}>
         <h1
           style={{
@@ -105,4 +153,14 @@ export default function Card(props) {
       </button>
     </div>
   );
-}
+};
+
+// export default Card;
+
+const mapStateToProps = (state) => {
+  return {
+    favorites: state.myFavorites,
+  };
+};
+
+export default connect(mapStateToProps, { addFav, removeFav })(Card);

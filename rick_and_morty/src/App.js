@@ -9,6 +9,8 @@ import About from "./components/About";
 import Detail from "./components/Detail";
 import Form from "./components/Form";
 import Favorites from "./components/Favorites";
+import { clearData } from "./redux/actions";
+import { useDispatch } from "react-redux";
 
 const URL = "https://rickandmortyapi.com/api/character/";
 const access = {
@@ -26,6 +28,7 @@ function App() {
   // } = useApp();
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [characters, setCharacters] = useState([]);
 

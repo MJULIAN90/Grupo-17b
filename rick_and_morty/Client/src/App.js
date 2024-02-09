@@ -12,7 +12,7 @@ import Favorites from "./components/Favorites";
 import { clearData } from "./redux/actions";
 import { useDispatch } from "react-redux";
 
-export const URL = "http://localhost:3001/rickandmorty/character/";
+export const URL = "http://localhost:3003/rickandmorty/character/";
 const access = {
   email: 'prueba@gmail.com',
   password: '123456',

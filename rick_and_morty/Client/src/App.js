@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import "./App.css";
 import Cards from "./components/Cards";
 import Nav from "./components/Nav";
@@ -12,7 +13,7 @@ import Favorites from "./components/Favorites";
 import { clearData } from "./redux/actions";
 import { useDispatch } from "react-redux";
 
-export const URL = "http://localhost:3003/rickandmorty/character/";
+export const URL = "http://localhost:3001/rickandmorty/character/";
 const access = {
   email: 'prueba@gmail.com',
   password: '123456',
@@ -60,15 +61,20 @@ function App() {
     setCharacters(personajesFiltrados);
   };
 
-  const login = (data) => {
+function login(userData) {
+    const { email, password } = userData;
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+    axios(URL + `?email=${email}&password=${password}`)
+    .then(({ data }) => {
+       const { access } = data;
+       console.log('data', data);
+       // setAccess(data);
+       access && navigate('/home');
+    })
+    .catch((error) => console.log('error', error));
+    
 
-    if (data.email === access.email && data.password === access.password) {
-      access.isLoged = true;
-      navigate('/home');
-    } else {
-      window.alert('Usuario o contraseña incorrectos');
-    }
-  }
+}
 
   const logout = () => {
     alert('adios');

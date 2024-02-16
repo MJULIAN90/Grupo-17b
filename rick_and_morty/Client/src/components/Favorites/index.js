@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import Card from "../Card";
-import { filterCards, orderCards } from "../../redux/actions";
+import { filterCards, orderCards, removeFav } from "../../redux/actions";
 
 const Favorites = (props) => {
   const [aux, setAux] = useState(false);
@@ -85,4 +85,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { filterCards, orderCards })(Favorites);
+export default connect(mapStateToProps, { filterCards, orderCards, removeFav })(Favorites);

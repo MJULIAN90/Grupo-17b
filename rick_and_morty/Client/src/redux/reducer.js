@@ -13,23 +13,26 @@ const initialState = {
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_FAV:
-      return {
-        ...state,
-        // spread operator
-        allCharacters: [...state.allCharacters, payload],
-        myFavorites: [...state.myFavorites, payload],
+      console.log("payload", payload);
+      return { ...state, myFavorites: payload, allCharacters: payload };
+      // return {
+      //   ...state,
+      //   // spread operator
+      //   allCharacters: [...state.allCharacters, payload],
+      //   myFavorites: [...state.myFavorites, payload],
 
-        // concat
-        // myFavorites: state.myFavorites.concat(payload),
+      //   // concat
+      //   // myFavorites: state.myFavorites.concat(payload),
 
-        // push
-        // myFavorites: state.myFavorites.push(payload),
-      };
+      //   // push
+      //   // myFavorites: state.myFavorites.push(payload),
+      // };
     case REMOVE_FAV:
-      return {
-        ...state,
-        myFavorites: state.myFavorites.filter((item) => item.id !== payload),
-      };
+      // return {
+      //   ...state,
+      //   myFavorites: state.myFavorites.filter((item) => item.id !== payload),
+      // };
+      return { ...state, myFavorites: payload };
     case FILTER_CARDS:
       if (payload.toUpperCase() === "ALL") {
         return {

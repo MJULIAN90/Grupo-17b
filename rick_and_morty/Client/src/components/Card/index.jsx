@@ -67,13 +67,13 @@ const Card = (props) => {
     species,
     origin,
     image,
-    onClose,
     addFav,
     removeFav,
     favorites,
   } = props;
   const [isFav, setIsFav] = useState(false);
 
+  console.log("props", props);
   const handleFavorite = () => {
     if (isFav) {
       setIsFav(false);
@@ -139,10 +139,10 @@ const Card = (props) => {
         <h2>{status}</h2>
         <h2>{species}</h2>
         <h2>{gender}</h2>
-        <h2>{origin.name}</h2>
+        <h2>{origin}</h2>
       </div>
       <button
-        onClick={() => onClose(props.id)}
+        onClick={() => removeFav(props.id)}
         style={{
           position: "absolute",
           top: 8,
@@ -163,4 +163,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addFav, removeFav })(Card);
+export default connect(mapStateToProps, { addFav, removeFav, removeFav })(Card);

@@ -11,14 +11,14 @@ const URL = "https://rickandmortyapi.com/api/character/";
 //   try {
 //     const response = await axios(`${URL}${ID}`);
 
-//     const { 
-//       id, 
-//       name, 
-//       status, 
+//     const {
+//       id,
+//       name,
+//       status,
 //       species,
-//       origin, 
-//       gender, 
-//       image 
+//       origin,
+//       gender,
+//       image
 //     } = response.data;
 
 //     const character = {
@@ -39,32 +39,55 @@ const URL = "https://rickandmortyapi.com/api/character/";
 // };
 
 // forma 2
-function getCharById(req, res) {
+async function getCharById(req, res) {
   const { id } = req.params;
-  console.log('id', id);
-  axios.get(`${URL}${id}`)
-    .then((response ) => {
-      if (response.data.id) {
+  console.log("id", id);
 
-        const { id, name, gender, species, origin, image, status } = response.data
-
-        const obj = {
-          id: id, name: name, gender: gender, species: species, origin: origin.name, image: image,
-          status: status
-        }
-        res.status(200).json(obj)
-      }
-      else res.status(404).json({ message: 'Not found' });
-
-    })
-    .catch(error => {
-      res.status(500).json({ message: error.message })
-    })
-} 
+  // con async await
+  try {
+    const response = await axios(`${URL}${id}`);
 
 
+    if (response.data.id) {
+      const { id, name, gender, species, origin, image, status } =
+        response.data;
 
+      const obj = {
+        id: id,
+        name: name,
+        gender: gender,
+        species: species,
+        origin: origin.name,
+        image: image,
+        status: status,
+      };
 
+      res.status(200).json(obj);
+    } else res.status(404).json({ message: "Not found" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+  //  con promesas
+  // axios.get(`${URL}${id}`)
+  //   .then((response ) => {
+  //     if (response.data.id) {
+
+  //       const { id, name, gender, species, origin, image, status } = response.data
+
+  //       const obj = {
+  //         id: id, name: name, gender: gender, species: species, origin: origin.name, image: image,
+  //         status: status
+  //       }
+  //       res.status(200).json(obj)
+  //     }
+  //     else res.status(404).json({ message: 'Not found' });
+
+  //   })
+  //   .catch(error => {
+  //     res.status(500).json({ message: error.message })
+  //   })
+}
 
 // const getCharById = async (res, ID) => {
 //   // con async await

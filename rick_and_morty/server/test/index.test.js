@@ -73,12 +73,14 @@ describe('Test de RUTAS', () => {
       expect(response.body).toEqual([character, character2]);
     });
 
+    
     it('eliminamos el id 1 Luego debes testear que cuando envías un ID válido se elimine correctamente al personaje.', async () => {
 
       const response = await agent.delete('/rickandmorty/fav/1').expect(200);
 
       expect(response.body).toEqual([character2]);
     });
+
 
     it('eliminamos el id 2 Luego debes testear que cuando envías un ID válido se elimine correctamente al personaje.', async () => {
 

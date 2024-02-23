@@ -5,7 +5,7 @@ import Cards from "./components/Cards";
 import Nav from "./components/Nav";
 // import useApp from "./hooks/useApp";
 
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import About from "./components/About";
 import Detail from "./components/Detail";
 import Form from "./components/Form";
@@ -15,10 +15,10 @@ import { useDispatch } from "react-redux";
 
 export const URL = "http://localhost:3001/rickandmorty/character/";
 const access = {
-  email: 'prueba@gmail.com',
-  password: '123456',
+  email: "prueba@gmail.com",
+  password: "123456",
   isLoged: false,
-}
+};
 
 function App() {
   // con el custom hook
@@ -61,26 +61,38 @@ function App() {
     setCharacters(personajesFiltrados);
   };
 
-function login(userData) {
+  async function login(userData) {
     const { email, password } = userData;
-    const URL = 'http://localhost:3001/rickandmorty/login/';
-    axios(URL + `?email=${email}&password=${password}`)
-    .then(({ data }) => {
-       const { access } = data;
-       console.log('data', data);
-       // setAccess(data);
-       access && navigate('/home');
-    })
-    .catch((error) => console.log('error', error));
-    
+    const URL = "http://localhost:3001/rickandmorty/login/";
 
-}
+    // con promesas
+    // axios(URL + `?email=${email}&password=${password}`)
+    // .then(({ data }) => {
+    //    const { access } = data;
+    //    console.log('data', data);
+    //    // setAccess(data);
+    //    access && navigate('/home');
+    // })
+    // .catch((error) => console.log('error', error));
+
+    // con async await
+    try {
+      const response = await axios(
+        URL + `?email=${email}&password=${password}`
+      );
+      const { access } = response.data;
+      console.log("data", response.data);
+      access && navigate("/home");
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
 
   const logout = () => {
-    alert('adios');
+    alert("adios");
     access.isLoged = false;
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   // useEffect(() => {
   //   !access.isLoged && navigate('/');
@@ -88,7 +100,7 @@ function login(userData) {
 
   return (
     <div className='App'>
-      {pathname !== '/' && <Nav onSearch={onSearch} logout={logout} />}
+      {pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />}
       <Routes>
         <Route path='/' element={<Form loginUser={login} />} />
         <Route
@@ -99,7 +111,7 @@ function login(userData) {
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/favorites' element={<Favorites />} />
 
-        <Route path="*" element={<h1>404 Not Found</h1>} />
+        <Route path='*' element={<h1>404 Not Found</h1>} />
       </Routes>
     </div>
   );

@@ -49,7 +49,7 @@ Por su parte el modelo en que se basan los generators previamente explicado cons
 
 La siguiente imagen muestra en detalle las diferencias entre ambos modelos recién expuestas:
 
-![Flow](/_src/assets/07-AsyncAwait/flow.png)
+![Flow](../_src/assets/07-AsyncAwait/flow.png)
 
 ### Generators Syntax
 
@@ -364,7 +364,7 @@ Si quisieramos que el orden de ejecución seá:
 
 ¿Cómo deberíamos modificar el código previo?
 
-![no-box](/_src/assets/07-AsyncAwait/Spoiler-Alert.png)
+![no-box](../_src/assets/07-AsyncAwait/Spoiler-Alert.png)
 
 ```javascript
 async function showInstructors() {

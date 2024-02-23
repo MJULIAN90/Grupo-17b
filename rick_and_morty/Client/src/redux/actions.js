@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 import {
   ADD_FAV,
@@ -15,15 +15,23 @@ import {
 // };
 
 export const addFav = (character) => {
-  const endpoint = 'http://localhost:3001/rickandmorty/fav';
-  return (dispatch) => {
-    axios.post(endpoint, character).then(({ data }) => {
-      console.log('data', data);
-      return dispatch({
-        type: ADD_FAV,
-        payload: data,
-      });
+  const endpoint = "http://localhost:3001/rickandmorty/fav";
+  return async (dispatch) => {
+
+    // con async await
+    const {data} = await axios.post(endpoint, character);
+    return dispatch({
+      type: ADD_FAV,
+      payload: data,
     });
+
+    // con promesas
+    // axios.post(endpoint, character).then(({ data }) => {
+    //   return dispatch({
+    //     type: ADD_FAV,
+    //     payload: data,
+    //   });
+    // });
   };
 };
 
@@ -35,16 +43,25 @@ export const addFav = (character) => {
 // };
 
 export const removeFav = (id) => {
-  console.log('id', id);
-  const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
-  return (dispatch) => {
-    axios.delete(endpoint).then(({ data }) => {
-      console.log('data', data);
-      return dispatch({
-        type: REMOVE_FAV,
-        payload: data,
-      });
+  console.log("id", id);
+  const endpoint = "http://localhost:3001/rickandmorty/fav/" + id;
+  return async (dispatch) => {
+    // con async await
+    const {data} = await axios.delete(endpoint);
+    return dispatch({
+      type: REMOVE_FAV,
+      payload: data,
     });
+
+
+    // con promesas
+    // axios.delete(endpoint).then(({ data }) => {
+    //   console.log("data", data);
+    //   return dispatch({
+    //     type: REMOVE_FAV,
+    //     payload: data,
+    //   });
+    // });
   };
 };
 
@@ -53,11 +70,11 @@ export const filterCards = (payload) => {
     type: FILTER_CARDS,
     payload,
   };
-}
+};
 
 export const orderCards = (payload) => {
   return {
     type: ORDER_CARDS,
     payload,
   };
-}
+};
